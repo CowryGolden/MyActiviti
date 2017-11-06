@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>郑州师范学院</title>
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+		<style type="text/css">
+			/*打分区域样式*/
+			
+			.scoring {
+				width: 229px;
+				height: 194px;
+				background-color: #eaeff3;
+				position: fixed;
+				top: 150px;
+				right: 100px;
+			}
+			
+			.zzsfLogo {
+				position: absolute;
+				top: -48px;
+				left: 78px;
+			}
+			
+			.zzsfPeople,
+			.zzsfBack {
+				position: absolute;
+				top: 10px;
+			}
+			
+			.zzsfPeople {
+				left: 20px;
+			}
+			
+			.zzsfBack {
+				right: 20px;
+			}
+			
+			.onlineScoring {
+				text-align: center;
+				line-height: 50px;
+				margin-top: 50px;
+				color: gray;
+			}
+			
+			.scorInput {
+				text-align: center;
+			}
+			
+			.selects {
+				width: 40px;
+				height: 20px;
+				text-align: center;
+				margin: 0 auto;
+			}
+			
+			.scorButton {
+				height: 25px;
+				width: 70px;
+				background-color: #36b3df;
+				color: #fff;
+				margin: 20px auto;
+				text-align: center;
+				font-size: 14px;
+				line-height: 25px;
+				border: 1px solid gainsboro;
+				cursor: pointer;
+			}
+			
+			.scorButton:hover {
+				border: 1px solid #36b3df
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery.js"></script>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$(".click").click(function() {
+					$(".tip").fadeIn(200);
+				});
+				$(".tiptop a").click(function() {
+					$(".tip").fadeOut(200);
+				});
+				$(".sure").click(function() {
+					$(".tip").fadeOut(100);
+				});
+				$(".cancel").click(function() {
+					$(".tip").fadeOut(100);
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+
+		<div class="place">
+			<span>位置：</span>
+			<ul class="placeul">
+				<li><a href="#">首页</a></li>
+				<li><a href="#">管理员信息</a></li>
+				<li><a href="#">学生信息</a></li>
+			</ul>
+		</div>
+		<div class="rightinfo">
+			<div>
+				<video src="images/安防.mp4" controls="controls" width="100%" height="100%">您的浏览器不支持video标签</video>
+				
+			</div>
+			<div class="scoring">
+				<img class="zzsfLogo" src="../zzsf/generic/web/images/zzsfLogo.png" />
+				<img class="zzsfBack" src="../zzsf/generic/web/images/back.png" />
+				<img class="zzsfPeople" src="../zzsf/generic/web/images/people.png" />
+				<div class="onlineScoring">
+					<strong><img src="../zzsf/generic/web/images/scoring.png"/> 在线打分</strong>
+				</div>
+				<div class="scorInput">
+					<input type="text" maxlength="2" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();" placeholder="" class="selects" />
+				</div>
+				<div class="scorButton">
+					提交
+				</div>
+
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$(".scorButton").click(function() {
+			window.location.href = "studentEvaluation.html"
+		})
+	</script>
+
+</html>

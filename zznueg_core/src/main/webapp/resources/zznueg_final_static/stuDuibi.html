@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="layui/layui/css/layui.css" />
+		<style type="text/css">
+			.average {
+				width: 95%;
+				margin:  0 auto;
+			}
+			
+			#main1 {
+				height: 500px;
+				width: 100%;
+				text-align: center;
+			}
+			
+			.tittle {
+				height: 45px;
+				background-color: #F2F2F2;
+				border-left: 3px solid #3EAFE0;
+				line-height: 45px;
+				font-size: 17px;
+				margin: 20px 0;
+				padding-left: 10px;
+			}
+			
+			.tablelist tr td {
+				border: 1px solid gainsboro;
+			}
+			
+			.paiming ul li {
+				line-height: 50px;
+				text-align: center;
+				padding: 0 5px;
+				float: left;
+			}
+			
+			.paiming ul li div {
+				margin-left: 15px;
+			}
+			
+		</style>
+
+	</head>
+
+	<body>
+		<div class="average clear">
+			<div class="tittle2_select clear">
+				<div class="shuoming">
+					<p>
+						注：我的本次考试成绩和全体学生平均成绩做对比；
+					</p>
+
+				</div>
+				<div id="main1">
+
+				</div>
+
+			</div>
+		</div>
+
+	</body>
+	<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/echarts.js" type="text/javascript" charset="utf-8"></script>
+	<script src="layui/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		setIframeH();
+
+		function setIframeH() {
+			var body = $(document.body);
+			var iframe = $(parent.document.getElementById('parentIframe'));
+			iframe.height(body.height()+50);
+		}
+		var color3 = ['#4596e5', '#2ec7c9', '#b6a2de', '#5c9ded', '#36bd9b', '#22b7e5', '#7266bb', '#fe9331'];
+		var myChart1 = echarts.init(document.getElementById("main1"));
+		var option1 = {
+				color: color3,
+				title: {
+					text: "我的成绩对比图",
+					left: "center"
+				},
+				tooltip: {
+					trigger: 'axis', //弹框的显示与否
+					axisPointer: {
+						type: 'cross'
+					},
+					bottom: 'bottom'
+				},
+				legend: {
+					data: ['各科平均成绩', '我的成绩'],
+					y: 'bottom'
+				},
+				xAxis: {
+					data: ["微课", "板书", "教案", "课件"],
+					name: '科目'
+				},
+				yAxis: {
+					type: 'value',
+					name: '单科成绩',
+					min: 0,
+					max: 100
+				},
+				series: [{
+					name: '各科平均成绩',
+					type: 'bar',
+					data: [60, 80, 70, 70],
+					barGap: '0%',
+					barWidth:45
+				}, {
+					name: '我的成绩',
+					type: 'bar',
+					data: [80, 70, 70, 80],
+					barWidth:45
+				}]
+			}
+			//使用刚指定的配置项和数据显示图表
+		myChart1.setOption(option1);
+	</script>
+
+</html>

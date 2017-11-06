@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzrenfeng.zznueg.dao.DepartmentInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.zzrenfeng.zznueg.entity.DepartmentInfo" >
+    <id column="deptId" property="deptId" jdbcType="VARCHAR" />
+    <result column="deptName" property="deptName" jdbcType="VARCHAR" />
+    <result column="deptLeader" property="deptLeader" jdbcType="VARCHAR" />
+    <result column="contact" property="contact" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="acaId" property="acaId" jdbcType="VARCHAR" />
+    <result column="acaName" property="acaName" jdbcType="VARCHAR" />
+    <result column="memo" property="memo" jdbcType="VARCHAR" />
+    <result column="creater" property="creater" jdbcType="VARCHAR" />
+    <result column="modifyer" property="modifyer" jdbcType="VARCHAR" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="lastmod" property="lastmod" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    deptId, deptName, deptLeader, contact, status, acaId, acaName, memo, creater, modifyer, 
+    created, lastmod
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from zznu_eva_dept_info
+    where deptId = #{deptId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from zznu_eva_dept_info
+    where deptId = #{deptId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zzrenfeng.zznueg.entity.DepartmentInfo" >
+    insert into zznu_eva_dept_info (deptId, deptName, deptLeader, 
+      contact, status, acaId, 
+      acaName, memo, creater, 
+      modifyer, created, lastmod
+      )
+    values (#{deptId,jdbcType=VARCHAR}, #{deptName,jdbcType=VARCHAR}, #{deptLeader,jdbcType=VARCHAR}, 
+      #{contact,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, #{acaId,jdbcType=VARCHAR}, 
+      #{acaName,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}, #{creater,jdbcType=VARCHAR}, 
+      #{modifyer,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, #{lastmod,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzrenfeng.zznueg.entity.DepartmentInfo" >
+    insert into zznu_eva_dept_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="deptId != null" >
+        deptId,
+      </if>
+      <if test="deptName != null" >
+        deptName,
+      </if>
+      <if test="deptLeader != null" >
+        deptLeader,
+      </if>
+      <if test="contact != null" >
+        contact,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="acaId != null" >
+        acaId,
+      </if>
+      <if test="acaName != null" >
+        acaName,
+      </if>
+      <if test="memo != null" >
+        memo,
+      </if>
+      <if test="creater != null" >
+        creater,
+      </if>
+      <if test="modifyer != null" >
+        modifyer,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="lastmod != null" >
+        lastmod,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="deptId != null" >
+        #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null" >
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptLeader != null" >
+        #{deptLeader,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="acaId != null" >
+        #{acaId,jdbcType=VARCHAR},
+      </if>
+      <if test="acaName != null" >
+        #{acaName,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="creater != null" >
+        #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyer != null" >
+        #{modifyer,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmod != null" >
+        #{lastmod,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzrenfeng.zznueg.entity.DepartmentInfo" >
+    update zznu_eva_dept_info
+    <set >
+      <if test="deptName != null" >
+        deptName = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptLeader != null" >
+        deptLeader = #{deptLeader,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        contact = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="acaId != null" >
+        acaId = #{acaId,jdbcType=VARCHAR},
+      </if>
+      <if test="acaName != null" >
+        acaName = #{acaName,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        memo = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="creater != null" >
+        creater = #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyer != null" >
+        modifyer = #{modifyer,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmod != null" >
+        lastmod = #{lastmod,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where deptId = #{deptId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzrenfeng.zznueg.entity.DepartmentInfo" >
+    update zznu_eva_dept_info
+    set deptName = #{deptName,jdbcType=VARCHAR},
+      deptLeader = #{deptLeader,jdbcType=VARCHAR},
+      contact = #{contact,jdbcType=VARCHAR},
+      status = #{status,jdbcType=CHAR},
+      acaId = #{acaId,jdbcType=VARCHAR},
+      acaName = #{acaName,jdbcType=VARCHAR},
+      memo = #{memo,jdbcType=VARCHAR},
+      creater = #{creater,jdbcType=VARCHAR},
+      modifyer = #{modifyer,jdbcType=VARCHAR},
+      created = #{created,jdbcType=TIMESTAMP},
+      lastmod = #{lastmod,jdbcType=TIMESTAMP}
+    where deptId = #{deptId,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 根据学院ID查询系部信息 -->
+  <!-- 
+  	* 为了方法通用性，这里将方法getDeptInfoByAcaId(paramMap)的传入参数由String acaId更改为Map paramMap；这样更有利方法传参的扩展；可以和多条件检索功能合并；
+	* 增加模糊检索参数：detpName-系部名称；deptLeader-系部负责人；
+   -->
+  <select id="getDeptInfoByAcaId" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	select 
+  	<include refid="Base_Column_List" />
+	from zznu_eva_dept_info 
+	where status='E' and acaId=#{acaId,jdbcType=VARCHAR}
+	<if test="deptName != null and deptName != ''">
+		and (deptName like concat(concat('%', #{deptName,jdbcType=VARCHAR}), '%') 
+		or deptLeader like concat(concat('%', #{deptLeader,jdbcType=VARCHAR}), '%'))
+	</if>
+  </select>
+  
+  <!-- 查询所有有效的系部信息 -->
+  <select id="findAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zznu_eva_dept_info
+  	where status='E'
+	<if test="deptName != null and deptName != ''">
+		and (deptName like concat(concat('%', #{deptName,jdbcType=VARCHAR}), '%') 
+		or deptLeader like concat(concat('%', #{deptLeader,jdbcType=VARCHAR}), '%'))
+	</if>
+  </select>
+  
+  
+</mapper>

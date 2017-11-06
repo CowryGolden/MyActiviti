@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzrenfeng.base.dao.SysLoginfoMapper" >
+  <resultMap id="BaseResultMap" type="com.zzrenfeng.base.entity.SysLoginfo" >
+    <id column="logId" property="logId" jdbcType="VARCHAR" />
+    <result column="logTime" property="logTime" jdbcType="TIMESTAMP" />
+    <result column="operatorId" property="operatorId" jdbcType="VARCHAR" />
+    <result column="operatorName" property="operatorName" jdbcType="VARCHAR" />
+    <result column="isBackground" property="isBackground" jdbcType="CHAR" />
+    <result column="logType" property="logType" jdbcType="CHAR" />
+    <result column="logEvent" property="logEvent" jdbcType="VARCHAR" />
+    <result column="operState" property="operState" jdbcType="CHAR" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+    <result column="remark2" property="remark2" jdbcType="VARCHAR" />
+    <result column="remark3" property="remark3" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.zzrenfeng.base.entity.SysLoginfo" extends="BaseResultMap" >
+    <result column="logDetail" property="logDetail" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    logId, logTime, operatorId, operatorName, isBackground, logType, logEvent, operState, 
+    remark1, remark2, remark3
+  </sql>
+  <sql id="Blob_Column_List" >
+    logDetail
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sys_loginfo
+    where logId = #{logId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sys_loginfo
+    where logId = #{logId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zzrenfeng.base.entity.SysLoginfo" >
+    insert into sys_loginfo (logId, logTime, operatorId, 
+      operatorName, isBackground, logType, 
+      logEvent, operState, remark1, 
+      remark2, remark3, logDetail
+      )
+    values (#{logId,jdbcType=VARCHAR}, #{logTime,jdbcType=TIMESTAMP}, #{operatorId,jdbcType=VARCHAR}, 
+      #{operatorName,jdbcType=VARCHAR}, #{isBackground,jdbcType=CHAR}, #{logType,jdbcType=CHAR}, 
+      #{logEvent,jdbcType=VARCHAR}, #{operState,jdbcType=CHAR}, #{remark1,jdbcType=VARCHAR}, 
+      #{remark2,jdbcType=VARCHAR}, #{remark3,jdbcType=VARCHAR}, #{logDetail,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzrenfeng.base.entity.SysLoginfo" >
+    insert into sys_loginfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="logId != null" >
+        logId,
+      </if>
+      <if test="logTime != null" >
+        logTime,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="operatorName != null" >
+        operatorName,
+      </if>
+      <if test="isBackground != null" >
+        isBackground,
+      </if>
+      <if test="logType != null" >
+        logType,
+      </if>
+      <if test="logEvent != null" >
+        logEvent,
+      </if>
+      <if test="operState != null" >
+        operState,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+      <if test="remark2 != null" >
+        remark2,
+      </if>
+      <if test="remark3 != null" >
+        remark3,
+      </if>
+      <if test="logDetail != null" >
+        logDetail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="logId != null" >
+        #{logId,jdbcType=VARCHAR},
+      </if>
+      <if test="logTime != null" >
+        #{logTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null" >
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="isBackground != null" >
+        #{isBackground,jdbcType=CHAR},
+      </if>
+      <if test="logType != null" >
+        #{logType,jdbcType=CHAR},
+      </if>
+      <if test="logEvent != null" >
+        #{logEvent,jdbcType=VARCHAR},
+      </if>
+      <if test="operState != null" >
+        #{operState,jdbcType=CHAR},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="logDetail != null" >
+        #{logDetail,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzrenfeng.base.entity.SysLoginfo" >
+    update sys_loginfo
+    <set >
+      <if test="logTime != null" >
+        logTime = #{logTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null" >
+        operatorName = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="isBackground != null" >
+        isBackground = #{isBackground,jdbcType=CHAR},
+      </if>
+      <if test="logType != null" >
+        logType = #{logType,jdbcType=CHAR},
+      </if>
+      <if test="logEvent != null" >
+        logEvent = #{logEvent,jdbcType=VARCHAR},
+      </if>
+      <if test="operState != null" >
+        operState = #{operState,jdbcType=CHAR},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        remark2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        remark3 = #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="logDetail != null" >
+        logDetail = #{logDetail,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where logId = #{logId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zzrenfeng.base.entity.SysLoginfo" >
+    update sys_loginfo
+    set logTime = #{logTime,jdbcType=TIMESTAMP},
+      operatorId = #{operatorId,jdbcType=VARCHAR},
+      operatorName = #{operatorName,jdbcType=VARCHAR},
+      isBackground = #{isBackground,jdbcType=CHAR},
+      logType = #{logType,jdbcType=CHAR},
+      logEvent = #{logEvent,jdbcType=VARCHAR},
+      operState = #{operState,jdbcType=CHAR},
+      remark1 = #{remark1,jdbcType=VARCHAR},
+      remark2 = #{remark2,jdbcType=VARCHAR},
+      remark3 = #{remark3,jdbcType=VARCHAR},
+      logDetail = #{logDetail,jdbcType=LONGVARCHAR}
+    where logId = #{logId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzrenfeng.base.entity.SysLoginfo" >
+    update sys_loginfo
+    set logTime = #{logTime,jdbcType=TIMESTAMP},
+      operatorId = #{operatorId,jdbcType=VARCHAR},
+      operatorName = #{operatorName,jdbcType=VARCHAR},
+      isBackground = #{isBackground,jdbcType=CHAR},
+      logType = #{logType,jdbcType=CHAR},
+      logEvent = #{logEvent,jdbcType=VARCHAR},
+      operState = #{operState,jdbcType=CHAR},
+      remark1 = #{remark1,jdbcType=VARCHAR},
+      remark2 = #{remark2,jdbcType=VARCHAR},
+      remark3 = #{remark3,jdbcType=VARCHAR}
+    where logId = #{logId,jdbcType=VARCHAR}
+  </update>
+</mapper>

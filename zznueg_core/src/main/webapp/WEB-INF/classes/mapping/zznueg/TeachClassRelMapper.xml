@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzrenfeng.zznueg.dao.TeachClassRelMapper" >
+  <resultMap id="BaseResultMap" type="com.zzrenfeng.zznueg.entity.TeachClassRel" >
+    <id column="profId" property="profId" jdbcType="VARCHAR" />
+    <result column="teachUserId" property="teachUserId" jdbcType="VARCHAR" />
+    <result column="classId" property="classId" jdbcType="VARCHAR" />
+    <result column="memo" property="memo" jdbcType="VARCHAR" />
+    <result column="creater" property="creater" jdbcType="VARCHAR" />
+    <result column="modifyer" property="modifyer" jdbcType="VARCHAR" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="lastmod" property="lastmod" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    profId, teachUserId, classId, memo, creater, modifyer, created, lastmod, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from zznu_eva_teach_class_rel
+    where profId = #{profId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from zznu_eva_teach_class_rel
+    where profId = #{profId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zzrenfeng.zznueg.entity.TeachClassRel" >
+    insert into zznu_eva_teach_class_rel (profId, teachUserId, classId, 
+      memo, creater, modifyer, 
+      created, lastmod, status)
+    values (#{profId,jdbcType=VARCHAR}, #{teachUserId,jdbcType=VARCHAR}, #{classId,jdbcType=VARCHAR}, 
+      #{memo,jdbcType=VARCHAR}, #{creater,jdbcType=VARCHAR}, #{modifyer,jdbcType=VARCHAR}, 
+      #{created,jdbcType=TIMESTAMP}, #{lastmod,jdbcType=TIMESTAMP}, #{status,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzrenfeng.zznueg.entity.TeachClassRel" >
+    insert into zznu_eva_teach_class_rel
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="profId != null" >
+        profId,
+      </if>
+      <if test="teachUserId != null" >
+        teachUserId,
+      </if>
+      <if test="classId != null" >
+        classId,
+      </if>
+      <if test="memo != null" >
+        memo,
+      </if>
+      <if test="creater != null" >
+        creater,
+      </if>
+      <if test="modifyer != null" >
+        modifyer,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="lastmod != null" >
+        lastmod,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="profId != null" >
+        #{profId,jdbcType=VARCHAR},
+      </if>
+      <if test="teachUserId != null" >
+        #{teachUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="classId != null" >
+        #{classId,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="creater != null" >
+        #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyer != null" >
+        #{modifyer,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmod != null" >
+        #{lastmod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzrenfeng.zznueg.entity.TeachClassRel" >
+    update zznu_eva_teach_class_rel
+    <set >
+      <if test="teachUserId != null" >
+        teachUserId = #{teachUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="classId != null" >
+        classId = #{classId,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        memo = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="creater != null" >
+        creater = #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyer != null" >
+        modifyer = #{modifyer,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmod != null" >
+        lastmod = #{lastmod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+    </set>
+    where profId = #{profId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzrenfeng.zznueg.entity.TeachClassRel" >
+    update zznu_eva_teach_class_rel
+    set teachUserId = #{teachUserId,jdbcType=VARCHAR},
+      classId = #{classId,jdbcType=VARCHAR},
+      memo = #{memo,jdbcType=VARCHAR},
+      creater = #{creater,jdbcType=VARCHAR},
+      modifyer = #{modifyer,jdbcType=VARCHAR},
+      created = #{created,jdbcType=TIMESTAMP},
+      lastmod = #{lastmod,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=CHAR}
+    where profId = #{profId,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 根据教师ID获取其教授的班级 -->
+  <select id="getTeachClassRelByTuid" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select 
+  	<include refid="Base_Column_List" />
+	from zznu_eva_teach_class_rel
+	where teachUserId = #{teachUserId,jdbcType=VARCHAR}	
+  </select>
+  
+  <!-- 根据教师ID和班级ID联合删除记录，delete不能声明resultType属性，默认为java.lang.Integer -->
+  <delete id="delTeachClassRelByTidAndCid" parameterType="java.util.Map">
+    delete from zznu_eva_teach_class_rel
+    where teachUserId = #{teachUserId,jdbcType=VARCHAR}
+    and classId = #{classId,jdbcType=VARCHAR}
+  </delete>
+  
+  
+</mapper>

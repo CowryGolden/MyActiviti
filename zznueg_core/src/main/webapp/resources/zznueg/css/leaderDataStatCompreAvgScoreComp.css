@@ -1,0 +1,103 @@
+.average {
+	width: 100%;
+}
+
+#main2 {
+	width: 100%;
+	min-height: 500px;
+	border: 1px solid gainsboro;
+	float: right;
+	text-align: center;
+}
+
+#main3 {
+	width: 100%;
+	height: 400px;
+	text-align: center;
+	margin-top: 50px;
+}
+
+.tittle2_select {
+	border-left: 3px solid #3EAFE0;
+	background-color: #F2F2F2;
+	height: 45px;
+}
+
+.tittle2_select ul {
+	border: 1px solid gainsboro;
+	background-color: #fff;
+	margin-left: 10px;
+	width: 80%;
+	padding-right: 15px;
+	display: none;
+	position: absolute;
+	top: 45px;
+	z-index: 1212121;
+}
+
+.tittle2_select ul li {
+	float: left;
+	margin-left: 15px;
+	margin-bottom: 15px;
+}
+
+.tittle2_select ul li input {
+	float: left;
+	margin-top: 15px;
+}
+
+.tittle2_select ul li span {
+	float: left;
+	margin-top: 13px;
+	margin-left: 3px;
+}
+
+.tablelist tbody tr td {
+	text-indent: 0;
+}
+
+.tablelist tbody tr:nth-child(odd) {
+	background-color: #f2f2f2;
+}
+
+#xuanze {
+	width: 100px;
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	background-color: #fff;
+	border: 1px solid gainsboro;
+	float: left;
+	cursor: pointer;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+#xuanze:hover {
+	background-color: #4596E5;
+	color: #fff;
+}
+
+.Export {
+	margin-top: 80px;
+	float: right;
+	margin-right: 20px;
+	line-height: 50px;
+}
+
+.Export a {
+	color: red;
+}
+
+.xysubmit {
+	display: inline-block;
+	width: 60px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	background-color: #4596E5;
+	color: white;
+	cursor: pointer;
+	float: right;
+	margin-right: 50px;
+}

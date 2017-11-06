@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzrenfeng.zznueg.dao.SubjectInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.zzrenfeng.zznueg.entity.SubjectInfo" >
+    <id column="subjectId" property="subjectId" jdbcType="VARCHAR" />
+    <result column="subjectName" property="subjectName" jdbcType="VARCHAR" />
+    <result column="subjectCategory" property="subjectCategory" jdbcType="CHAR" />
+    <result column="isValid" property="isValid" jdbcType="CHAR" />
+    <result column="memo" property="memo" jdbcType="VARCHAR" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    subjectId, subjectName, subjectCategory, isValid, memo, created
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from zznu_eva_subject_info
+    where subjectId = #{subjectId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from zznu_eva_subject_info
+    where subjectId = #{subjectId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zzrenfeng.zznueg.entity.SubjectInfo" >
+    insert into zznu_eva_subject_info (subjectId, subjectName, subjectCategory, 
+      isValid, memo, created
+      )
+    values (#{subjectId,jdbcType=VARCHAR}, #{subjectName,jdbcType=VARCHAR}, #{subjectCategory,jdbcType=CHAR}, 
+      #{isValid,jdbcType=CHAR}, #{memo,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzrenfeng.zznueg.entity.SubjectInfo" >
+    insert into zznu_eva_subject_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="subjectId != null" >
+        subjectId,
+      </if>
+      <if test="subjectName != null" >
+        subjectName,
+      </if>
+      <if test="subjectCategory != null" >
+        subjectCategory,
+      </if>
+      <if test="isValid != null" >
+        isValid,
+      </if>
+      <if test="memo != null" >
+        memo,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="subjectId != null" >
+        #{subjectId,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectName != null" >
+        #{subjectName,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectCategory != null" >
+        #{subjectCategory,jdbcType=CHAR},
+      </if>
+      <if test="isValid != null" >
+        #{isValid,jdbcType=CHAR},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzrenfeng.zznueg.entity.SubjectInfo" >
+    update zznu_eva_subject_info
+    <set >
+      <if test="subjectName != null" >
+        subjectName = #{subjectName,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectCategory != null" >
+        subjectCategory = #{subjectCategory,jdbcType=CHAR},
+      </if>
+      <if test="isValid != null" >
+        isValid = #{isValid,jdbcType=CHAR},
+      </if>
+      <if test="memo != null" >
+        memo = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where subjectId = #{subjectId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzrenfeng.zznueg.entity.SubjectInfo" >
+    update zznu_eva_subject_info
+    set subjectName = #{subjectName,jdbcType=VARCHAR},
+      subjectCategory = #{subjectCategory,jdbcType=CHAR},
+      isValid = #{isValid,jdbcType=CHAR},
+      memo = #{memo,jdbcType=VARCHAR},
+      created = #{created,jdbcType=TIMESTAMP}
+    where subjectId = #{subjectId,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 为了方法通用性，将模糊检索功能合并到该方法中；为了增加检索参数的可扩展性，这里将传入参数由PageUtil pageUtil修改为Map paramMap -->
+  <select id="findAllByPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	SELECT 
+  	<include refid="Base_Column_List"/>
+  	FROM zznu_eva_subject_info 
+  	WHERE 1=1
+  	<if test="subjectName != null and subjectName != ''">
+  		and subjectName like concat(concat('%', #{subjectName,jdbcType=VARCHAR}), '%') 
+  	</if>
+  	<if test="subjectCategory != null and subjectCategory != ''">
+  		and subjectCategory = #{subjectCategory,jdbcType=CHAR}
+  	</if>
+  	<if test="isValid != null and isValid != ''">
+  		and isValid = #{isValid,jdbcType=CHAR}
+  	</if>
+  	ORDER BY subjectCategory ASC
+  	LIMIT #{begin},#{end}	
+  </select>
+  
+  <!-- 为了实现和findAllByPage方法的联动性，同步增加检索条件参数 -->
+  <select id="getCount" resultType="java.lang.Long">
+	SELECT COUNT(*) as count FROM zznu_eva_subject_info
+	WHERE 1=1
+	<if test="subjectName != null and subjectName != ''">
+		and subjectName like concat(concat('%', #{subjectName,jdbcType=VARCHAR}), '%') 
+	</if>
+	<if test="subjectCategory != null and subjectCategory != ''">
+		and subjectCategory = #{subjectCategory,jdbcType=CHAR}
+	</if>
+  	<if test="isValid != null and isValid != ''">
+  		and isValid = #{isValid,jdbcType=CHAR}
+  	</if>
+  </select>
+  
+  <select id="findAll" resultMap="BaseResultMap">
+  	select 
+  	<include refid="Base_Column_List"/>
+	from zznu_eva_subject_info 
+	where isValid='1' 
+	order by subjectCategory asc
+  </select>
+  
+</mapper>

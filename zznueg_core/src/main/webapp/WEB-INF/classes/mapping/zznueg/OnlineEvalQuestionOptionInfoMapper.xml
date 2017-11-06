@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzrenfeng.zznueg.dao.OnlineEvalQuestionOptionInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.zzrenfeng.zznueg.entity.OnlineEvalQuestionOptionInfo" >
+    <id column="optionId" property="optionId" jdbcType="VARCHAR" />
+    <result column="questionId" property="questionId" jdbcType="VARCHAR" />
+    <result column="optionCode" property="optionCode" jdbcType="VARCHAR" />
+    <result column="optionContent" property="optionContent" jdbcType="VARCHAR" />
+    <result column="optionScore" property="optionScore" jdbcType="SMALLINT" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+    <result column="remark2" property="remark2" jdbcType="VARCHAR" />
+    <result column="remark3" property="remark3" jdbcType="VARCHAR" />
+    <result column="creater" property="creater" jdbcType="VARCHAR" />
+    <result column="modifyer" property="modifyer" jdbcType="VARCHAR" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="lastmod" property="lastmod" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    optionId, questionId, optionCode, optionContent, optionScore, remark1, remark2, remark3, 
+    creater, modifyer, created, lastmod
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from zznu_eva_onl_question_option_info
+    where optionId = #{optionId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from zznu_eva_onl_question_option_info
+    where optionId = #{optionId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zzrenfeng.zznueg.entity.OnlineEvalQuestionOptionInfo" >
+    insert into zznu_eva_onl_question_option_info (optionId, questionId, optionCode, 
+      optionContent, optionScore, remark1, 
+      remark2, remark3, creater, 
+      modifyer, created, lastmod
+      )
+    values (#{optionId,jdbcType=VARCHAR}, #{questionId,jdbcType=VARCHAR}, #{optionCode,jdbcType=VARCHAR}, 
+      #{optionContent,jdbcType=VARCHAR}, #{optionScore,jdbcType=SMALLINT}, #{remark1,jdbcType=VARCHAR}, 
+      #{remark2,jdbcType=VARCHAR}, #{remark3,jdbcType=VARCHAR}, #{creater,jdbcType=VARCHAR}, 
+      #{modifyer,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, #{lastmod,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzrenfeng.zznueg.entity.OnlineEvalQuestionOptionInfo" >
+    insert into zznu_eva_onl_question_option_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="optionId != null" >
+        optionId,
+      </if>
+      <if test="questionId != null" >
+        questionId,
+      </if>
+      <if test="optionCode != null" >
+        optionCode,
+      </if>
+      <if test="optionContent != null" >
+        optionContent,
+      </if>
+      <if test="optionScore != null" >
+        optionScore,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+      <if test="remark2 != null" >
+        remark2,
+      </if>
+      <if test="remark3 != null" >
+        remark3,
+      </if>
+      <if test="creater != null" >
+        creater,
+      </if>
+      <if test="modifyer != null" >
+        modifyer,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="lastmod != null" >
+        lastmod,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="optionId != null" >
+        #{optionId,jdbcType=VARCHAR},
+      </if>
+      <if test="questionId != null" >
+        #{questionId,jdbcType=VARCHAR},
+      </if>
+      <if test="optionCode != null" >
+        #{optionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="optionContent != null" >
+        #{optionContent,jdbcType=VARCHAR},
+      </if>
+      <if test="optionScore != null" >
+        #{optionScore,jdbcType=SMALLINT},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="creater != null" >
+        #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyer != null" >
+        #{modifyer,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmod != null" >
+        #{lastmod,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzrenfeng.zznueg.entity.OnlineEvalQuestionOptionInfo" >
+    update zznu_eva_onl_question_option_info
+    <set >
+      <if test="questionId != null" >
+        questionId = #{questionId,jdbcType=VARCHAR},
+      </if>
+      <if test="optionCode != null" >
+        optionCode = #{optionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="optionContent != null" >
+        optionContent = #{optionContent,jdbcType=VARCHAR},
+      </if>
+      <if test="optionScore != null" >
+        optionScore = #{optionScore,jdbcType=SMALLINT},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        remark2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        remark3 = #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="creater != null" >
+        creater = #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyer != null" >
+        modifyer = #{modifyer,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmod != null" >
+        lastmod = #{lastmod,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where optionId = #{optionId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzrenfeng.zznueg.entity.OnlineEvalQuestionOptionInfo" >
+    update zznu_eva_onl_question_option_info
+    set questionId = #{questionId,jdbcType=VARCHAR},
+      optionCode = #{optionCode,jdbcType=VARCHAR},
+      optionContent = #{optionContent,jdbcType=VARCHAR},
+      optionScore = #{optionScore,jdbcType=SMALLINT},
+      remark1 = #{remark1,jdbcType=VARCHAR},
+      remark2 = #{remark2,jdbcType=VARCHAR},
+      remark3 = #{remark3,jdbcType=VARCHAR},
+      creater = #{creater,jdbcType=VARCHAR},
+      modifyer = #{modifyer,jdbcType=VARCHAR},
+      created = #{created,jdbcType=TIMESTAMP},
+      lastmod = #{lastmod,jdbcType=TIMESTAMP}
+    where optionId = #{optionId,jdbcType=VARCHAR}
+  </update>
+</mapper>

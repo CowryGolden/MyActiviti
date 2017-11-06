@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzrenfeng.base.dao.QuestionMapper">
+    <resultMap id="BaseResultMap" type="com.zzrenfeng.base.entity.Question">
+        <id column="QSTN_ID" property="qstnId" jdbcType="VARCHAR"/>
+        <result column="QSTN_TITLE" property="qstnTitle" jdbcType="VARCHAR"/>
+        <result column="QSTN_KEY" property="qstnKey" jdbcType="VARCHAR"/>
+        <result column="QSTN_DESC" property="qstnDesc" jdbcType="VARCHAR"/>
+        <result column="STATUS" property="status" jdbcType="CHAR"/>
+        <result column="CREATED" property="created" jdbcType="TIMESTAMP"/>
+        <result column="LASTMOD" property="lastmod" jdbcType="TIMESTAMP"/>
+        <result column="CREATER" property="creater" jdbcType="VARCHAR"/>
+        <result column="MODIFYER" property="modifyer" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        QSTN_ID, QSTN_TITLE, QSTN_KEY, QSTN_DESC, STATUS, CREATED, LASTMOD, CREATER, MODIFYER
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from gen_question
+        where QSTN_ID = #{qstnId,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete from gen_question
+        where QSTN_ID = #{qstnId,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.zzrenfeng.base.entity.Question">
+        insert into gen_question (QSTN_ID,QSTN_TITLE, QSTN_KEY, QSTN_DESC,
+        STATUS, CREATED, LASTMOD,
+        CREATER, MODIFYER)
+        values (#{qstnId,jdbcType=VARCHAR}, #{qstnTitle,jdbcType=VARCHAR}, #{qstnKey,jdbcType=VARCHAR},
+        #{qstnDesc,jdbcType=VARCHAR},
+        #{status,jdbcType=CHAR}, #{created,jdbcType=TIMESTAMP}, #{lastmod,jdbcType=TIMESTAMP},
+        #{creater,jdbcType=VARCHAR}, #{modifyer,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.zzrenfeng.base.entity.Question">
+        insert into gen_question
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="qstnId != null">
+                QSTN_ID,
+            </if>
+            <if test="qstnTitle != null">
+                QSTN_TITLE,
+            </if>
+            <if test="qstnKey != null">
+                QSTN_KEY,
+            </if>
+            <if test="qstnDesc != null">
+                QSTN_DESC,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="created != null">
+                CREATED,
+            </if>
+            <if test="lastmod != null">
+                LASTMOD,
+            </if>
+            <if test="creater != null">
+                CREATER,
+            </if>
+            <if test="modifyer != null">
+                MODIFYER,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="qstnId != null">
+                #{qstnId,jdbcType=VARCHAR},
+            </if>
+            <if test="qstnTitle != null">
+                #{qstnTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="qstnKey != null">
+                #{qstnKey,jdbcType=VARCHAR},
+            </if>
+            <if test="qstnDesc != null">
+                #{qstnDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=CHAR},
+            </if>
+            <if test="created != null">
+                #{created,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastmod != null">
+                #{lastmod,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creater != null">
+                #{creater,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyer != null">
+                #{modifyer,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zzrenfeng.base.entity.Question">
+        update gen_question
+        <set>
+            <if test="qstnTitle != null">
+                QSTN_TITLE = #{qstnTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="qstnKey != null">
+                QSTN_KEY = #{qstnKey,jdbcType=VARCHAR},
+            </if>
+            <if test="qstnDesc != null">
+                QSTN_DESC = #{qstnDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=CHAR},
+            </if>
+            <if test="created != null">
+                CREATED = #{created,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastmod != null">
+                LASTMOD = #{lastmod,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creater != null">
+                CREATER = #{creater,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyer != null">
+                MODIFYER = #{modifyer,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where QSTN_ID = #{qstnId,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zzrenfeng.base.entity.Question">
+        update gen_question
+        set QSTN_TITLE = #{qstnTitle,jdbcType=VARCHAR},
+        QSTN_KEY = #{qstnKey,jdbcType=VARCHAR},
+        QSTN_DESC = #{qstnDesc,jdbcType=VARCHAR},
+        STATUS = #{status,jdbcType=CHAR},
+        CREATED = #{created,jdbcType=TIMESTAMP},
+        LASTMOD = #{lastmod,jdbcType=TIMESTAMP},
+        CREATER = #{creater,jdbcType=VARCHAR},
+        MODIFYER = #{modifyer,jdbcType=VARCHAR}
+        where QSTN_ID = #{qstnId,jdbcType=VARCHAR}
+    </update>
+    <select id="findAllByPage" parameterType="com.zzrenfeng.base.utils.PageUtil" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM gen_question LIMIT #{begin},#{end}
+    </select>
+    <select id="findAllByUser" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM gen_question
+        WHERE STATUS='E' AND CREATER = #{creater,jdbcType=VARCHAR} ORDER BY CREATED
+    </select>
+    <select id="findAllByTime" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM gen_question
+        WHERE STATUS='E' AND
+        CREATED &gt;= #{start,jdbcType=VARCHAR} AND CREATED &lt;= #{end,jdbcType=VARCHAR}
+        ORDER BY CREATED
+    </select>
+    <select id="findAllByKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM gen_question
+        WHERE STATUS='E' AND QSTN_KEY like CONCAT(CONCAT('%', #{qstnKey,jdbcType=VARCHAR}), '%') ORDER BY
+        CREATED
+    </select>
+    <select id="findAllByWord" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM gen_question
+        WHERE STATUS='E' AND (
+        QSTN_KEY like CONCAT(CONCAT('%', #{word,jdbcType=VARCHAR}), '%')
+        OR
+        QSTN_TITLE like CONCAT(CONCAT('%', #{word,jdbcType=VARCHAR}), '%')
+        OR
+        QSTN_DESC like CONCAT(CONCAT('%', #{word,jdbcType=VARCHAR}), '%')
+        ) ORDER BY CREATED
+    </select>
+    <select id="getCount" resultType="long">
+        SELECT COUNT(*) FROM gen_question
+    </select>
+</mapper>

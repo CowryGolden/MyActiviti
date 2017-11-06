@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="layui/layui/css/layui.css" />
+		<style type="text/css">
+			.average {
+				width: 100%;
+			    padding-top: 35px;
+			}
+			
+			#main1 {
+				width: 49%;
+				height: 500px;
+				border: 1px solid #ECECEC;
+				float: left;
+				text-align: center;
+			}
+			
+			#main2 {
+				width: 49%;
+				height: 500px;
+				border: 1px solid #ECECEC;
+				float: right;
+				text-align: center;
+				background-color: #fcfcfc;
+			}
+			
+			.tittle {
+				height: 45px;
+				background-color: #F2F2F2;
+				border-left: 3px solid #3EAFE0;
+				line-height: 45px;
+				font-size: 17px;
+				margin: 20px 0;
+				padding-left: 10px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div class="average clear">
+		  	<div class="tittle2_select clear">
+				<div id="main1">
+				</div>
+				<div id="main2">
+	
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/echarts.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+	var color3 = ['#4596e5','#2ec7c9', '#b6a2de','#5c9ded','#36bd9b','#22b7e5','#7266bb','#fe9331'];
+	var myChart1 = echarts.init(document.getElementById("main1"));
+		var option1= {
+			color: color3,
+			tooltip: {
+				trigger: 'axis', //弹框的显示与否
+				axisPointer: {
+					type: 'cross'
+				}
+			},
+			legend: {
+				data: ['上次我指导的学生各科平均成绩', '我指导的学生各科平均成绩']
+			},
+			xAxis: {
+				data: ["微课", "板书", "教案", "课件"]
+			},
+			yAxis: {
+				type: 'value',
+				name: '单科成绩',
+				min: 0,
+				max: 100
+			},
+			series: [{
+				name: '各科平均成绩',
+				type: 'bar',
+				data: [60, 80, 70, 70]
+			}, {
+				name: '单科最高成绩',
+				type: 'bar',
+				data: [80, 70, 70, 80]
+			}]
+		}
+		//使用刚指定的配置项和数据显示图表
+		myChart1.setOption(option1);
+		
+		var myChart2 = echarts.init(document.getElementById("main2"));
+		var option2= {
+			color: color3,
+			tooltip: {
+				trigger: 'axis', //弹框的显示与否
+				axisPointer: {
+					type: 'cross'
+				}
+			},
+			legend: {
+				data: ['各科平均成绩', '上一次学生各科的平均成绩']
+			},
+			xAxis: {
+				data: ["微课", "板书", "教案", "课件"]
+			},
+			yAxis: {
+				type: 'value',
+				name: '单科成绩',
+				min: 0,
+				max: 100
+			},
+			series: [{
+				name: '各科平均成绩',
+				type: 'bar',
+				data: [60, 80, 70, 70]
+			}, {
+				name: '上一次学生各科的平均成绩',
+				type: 'bar',
+				data: [80, 70, 70, 80]
+			}]
+		}
+		//使用刚指定的配置项和数据显示图表
+		myChart2.setOption(option2);
+	</script>
+
+</html>
