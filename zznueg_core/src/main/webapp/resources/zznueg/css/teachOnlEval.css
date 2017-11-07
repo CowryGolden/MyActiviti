@@ -1,0 +1,62 @@
+.neirong {
+	padding: 0 10px;
+}
+
+.formsumbit form .layui-form-item .layui-input-block input {
+	width: 90%;
+	display: inline-block;
+}
+
+.layui-form-select dl {
+	min-width: 90%;
+}
+
+.layui-form-select .layui-edge {
+	right: 12%;
+}
+
+.fenzhi {
+	margin-left: 15px;
+	color: red;
+}
+
+
+.layui-form-checkbox[lay-skin=primary]:hover i {
+	border-color: #4596E5;
+}
+
+.layui-form-checked[lay-skin=primary] i {
+	background-color: #4596E5;
+}
+
+.layui-form-radio i:hover,
+.layui-form-radioed i {
+	color: #4596E5;
+}
+
+.layui-form-label {
+	width: 100%;
+	text-align: left;
+	font-size: 14px;
+}
+
+.layui-input-block {
+	width: 95%;
+	margin-left: 15px;
+	text-align: left;
+}
+
+.input-field {
+	margin-left: 90px;
+}
+
+.questionClass {
+	line-height: 50px;
+	color: #4596E5;
+	font-size: 18px;
+}
+
+.templ{
+    width: 60px;
+    font-size: 14px;
+}

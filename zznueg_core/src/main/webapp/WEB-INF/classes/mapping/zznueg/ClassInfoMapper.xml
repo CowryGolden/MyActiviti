@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzrenfeng.zznueg.dao.ClassInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.zzrenfeng.zznueg.entity.ClassInfo" >
+    <id column="classId" property="classId" jdbcType="VARCHAR" />
+    <result column="className" property="className" jdbcType="VARCHAR" />
+    <result column="deptId" property="deptId" jdbcType="VARCHAR" />
+    <result column="deptName" property="deptName" jdbcType="CHAR" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="teacherId" property="teacherId" jdbcType="VARCHAR" />
+    <result column="teacherName" property="teacherName" jdbcType="VARCHAR" />
+    <result column="memo" property="memo" jdbcType="VARCHAR" />
+    <result column="creater" property="creater" jdbcType="VARCHAR" />
+    <result column="modifyer" property="modifyer" jdbcType="VARCHAR" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="lastmod" property="lastmod" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    classId, className, deptId, deptName, status, teacherId, teacherName, memo, creater, 
+    modifyer, created, lastmod
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from zznu_eva_class_info
+    where classId = #{classId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from zznu_eva_class_info
+    where classId = #{classId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zzrenfeng.zznueg.entity.ClassInfo" >
+    insert into zznu_eva_class_info (classId, className, deptId, 
+      deptName, status, teacherId, 
+      teacherName, memo, creater, 
+      modifyer, created, lastmod
+      )
+    values (#{classId,jdbcType=VARCHAR}, #{className,jdbcType=VARCHAR}, #{deptId,jdbcType=VARCHAR}, 
+      #{deptName,jdbcType=CHAR}, #{status,jdbcType=CHAR}, #{teacherId,jdbcType=VARCHAR}, 
+      #{teacherName,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}, #{creater,jdbcType=VARCHAR}, 
+      #{modifyer,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, #{lastmod,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzrenfeng.zznueg.entity.ClassInfo" >
+    insert into zznu_eva_class_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="classId != null" >
+        classId,
+      </if>
+      <if test="className != null" >
+        className,
+      </if>
+      <if test="deptId != null" >
+        deptId,
+      </if>
+      <if test="deptName != null" >
+        deptName,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="teacherId != null" >
+        teacherId,
+      </if>
+      <if test="teacherName != null" >
+        teacherName,
+      </if>
+      <if test="memo != null" >
+        memo,
+      </if>
+      <if test="creater != null" >
+        creater,
+      </if>
+      <if test="modifyer != null" >
+        modifyer,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="lastmod != null" >
+        lastmod,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="classId != null" >
+        #{classId,jdbcType=VARCHAR},
+      </if>
+      <if test="className != null" >
+        #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null" >
+        #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null" >
+        #{deptName,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="teacherId != null" >
+        #{teacherId,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherName != null" >
+        #{teacherName,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="creater != null" >
+        #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyer != null" >
+        #{modifyer,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmod != null" >
+        #{lastmod,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzrenfeng.zznueg.entity.ClassInfo" >
+    update zznu_eva_class_info
+    <set >
+      <if test="className != null" >
+        className = #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null" >
+        deptId = #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null" >
+        deptName = #{deptName,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="teacherId != null" >
+        teacherId = #{teacherId,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherName != null" >
+        teacherName = #{teacherName,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        memo = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="creater != null" >
+        creater = #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyer != null" >
+        modifyer = #{modifyer,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmod != null" >
+        lastmod = #{lastmod,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where classId = #{classId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzrenfeng.zznueg.entity.ClassInfo" >
+    update zznu_eva_class_info
+    set className = #{className,jdbcType=VARCHAR},
+      deptId = #{deptId,jdbcType=VARCHAR},
+      deptName = #{deptName,jdbcType=CHAR},
+      status = #{status,jdbcType=CHAR},
+      teacherId = #{teacherId,jdbcType=VARCHAR},
+      teacherName = #{teacherName,jdbcType=VARCHAR},
+      memo = #{memo,jdbcType=VARCHAR},
+      creater = #{creater,jdbcType=VARCHAR},
+      modifyer = #{modifyer,jdbcType=VARCHAR},
+      created = #{created,jdbcType=TIMESTAMP},
+      lastmod = #{lastmod,jdbcType=TIMESTAMP}
+    where classId = #{classId,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 根据系部ID获取所属的所有班级信息 -->
+  <!-- 这里为了方法通用性，将传递参数由java.lang.String修改为java.util.Map -->
+  <select id="getClassInfoByDeptId" parameterType="java.util.Map" resultMap="BaseResultMap">
+	select 
+	<include refid="Base_Column_List"/>
+	from zznu_eva_class_info 
+	where status = 'E' and deptId = #{deptId, jdbcType=VARCHAR}
+	<if test="className != null and className != ''">
+		and (className like concat(concat('%', #{className,jdbcType=VARCHAR}), '%')
+		or teacherName like concat(concat('%', #{teacherName,jdbcType=VARCHAR}), '%'))
+	</if>
+  </select>
+  
+  <!-- 分页查询班级信息，可以根据非空条件进行筛选；可以代替上述getClassInfoByDeptId()方法使用 -->
+  <select id="getClassInfoByPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+	select 
+	<include refid="Base_Column_List"/>
+	from zznu_eva_class_info 
+	where status = 'E'
+	<if test="deptId != null and deptId != ''">
+		and deptId = #{deptId, jdbcType=VARCHAR}
+	</if>
+	<if test="className != null and className != ''">
+		and (className like concat(concat('%', #{className,jdbcType=VARCHAR}), '%')
+		or teacherName like concat(concat('%', #{teacherName,jdbcType=VARCHAR}), '%'))
+	</if>
+	order by deptName,className asc
+	limit #{begin},#{end}
+  </select>
+  
+  <!-- 获取满足条件的记录总数，供分页使用 -->
+  <select id="getClassInfoCount" parameterType="java.util.Map" resultType="java.lang.Long">
+	select count(*) as count
+	from zznu_eva_class_info 
+	where status = 'E'
+	<if test="deptId != null and deptId != ''">
+		and deptId = #{deptId, jdbcType=VARCHAR}
+	</if>
+	<if test="className != null and className != ''">
+		and (className like concat(concat('%', #{className,jdbcType=VARCHAR}), '%')
+		or teacherName like concat(concat('%', #{teacherName,jdbcType=VARCHAR}), '%'))
+	</if>
+  </select>
+  
+</mapper>

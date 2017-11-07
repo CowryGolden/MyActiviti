@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzrenfeng.zznueg.dao.TeachStuInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.zzrenfeng.zznueg.entity.TeachStuInfo" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="tsno" property="tsno" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="CHAR" />
+    <result column="deptId" property="deptId" jdbcType="VARCHAR" />
+    <result column="classId" property="classId" jdbcType="VARCHAR" />
+    <result column="userType" property="userType" jdbcType="CHAR" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="creater" property="creater" jdbcType="VARCHAR" />
+    <result column="modifyer" property="modifyer" jdbcType="VARCHAR" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="lastmod" property="lastmod" jdbcType="TIMESTAMP" />
+    <result column="isOpenAct" property="isOpenAct" jdbcType="VARCHAR" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+    <result column="remark2" property="remark2" jdbcType="VARCHAR" />
+    <result column="remark3" property="remark3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, tsno, name, sex, deptId, classId, userType, status, creater, modifyer, created, lastmod, isOpenAct,
+    remark1, remark2, remark3
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from zznu_eva_teach_stu_info
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from zznu_eva_teach_stu_info
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zzrenfeng.zznueg.entity.TeachStuInfo" >
+    insert into zznu_eva_teach_stu_info (id, tsno, name, 
+      sex, deptId, classId, userType, status, 
+      creater, modifyer, created, 
+      lastmod, isOpenAct, remark1, remark2, 
+      remark3)
+    values (#{id,jdbcType=VARCHAR}, #{tsno,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=CHAR}, #{deptId,jdbcType=VARCHAR}, #{classId,jdbcType=VARCHAR}, #{userType,jdbcType=CHAR}, 
+      #{status,jdbcType=CHAR}, #{creater,jdbcType=VARCHAR}, #{modifyer,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, 
+      #{lastmod,jdbcType=TIMESTAMP}, #{isOpenAct,jdbcType=VARCHAR}, #{remark1,jdbcType=VARCHAR}, #{remark2,jdbcType=VARCHAR}, 
+      #{remark3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzrenfeng.zznueg.entity.TeachStuInfo" >
+    insert into zznu_eva_teach_stu_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="tsno != null" >
+        tsno,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="deptId != null" >
+        deptId,
+      </if>
+      <if test="classId != null" >
+        classId,
+      </if>
+      <if test="userType != null" >
+        userType,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="creater != null" >
+        creater,
+      </if>
+      <if test="modifyer != null" >
+        modifyer,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="lastmod != null" >
+        lastmod,
+      </if>
+      <if test="isOpenAct != null" >
+        isOpenAct,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+      <if test="remark2 != null" >
+        remark2,
+      </if>
+      <if test="remark3 != null" >
+        remark3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="tsno != null" >
+        #{tsno,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="deptId != null" >
+        #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="classId != null" >
+        #{classId,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="creater != null" >
+        #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyer != null" >
+        #{modifyer,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmod != null" >
+        #{lastmod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isOpenAct != null" >
+        #{isOpenAct,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        #{remark3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzrenfeng.zznueg.entity.TeachStuInfo" >
+    update zznu_eva_teach_stu_info
+    <set >
+      <if test="tsno != null" >
+        tsno = #{tsno,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="deptId != null" >
+        deptId = #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="classId != null" >
+        classId = #{classId,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        userType = #{userType,jdbcType=CHAR},
+      </if>
+       <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="creater != null" >
+        creater = #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyer != null" >
+        modifyer = #{modifyer,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmod != null" >
+        lastmod = #{lastmod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isOpenAct != null" >
+        isOpenAct = #{isOpenAct,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        remark2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        remark3 = #{remark3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzrenfeng.zznueg.entity.TeachStuInfo" >
+    update zznu_eva_teach_stu_info
+    set tsno = #{tsno,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
+      deptId = #{deptId,jdbcType=VARCHAR},
+      classId = #{classId,jdbcType=VARCHAR},
+      userType = #{userType,jdbcType=CHAR},
+      status = #{status,jdbcType=CHAR},
+      creater = #{creater,jdbcType=VARCHAR},
+      modifyer = #{modifyer,jdbcType=VARCHAR},
+      created = #{created,jdbcType=TIMESTAMP},
+      lastmod = #{lastmod,jdbcType=TIMESTAMP},
+      isOpenAct = #{isOpenAct,jdbcType=VARCHAR},
+      remark1 = #{remark1,jdbcType=VARCHAR},
+      remark2 = #{remark2,jdbcType=VARCHAR},
+      remark3 = #{remark3,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 分页查询所有教师信息 -->
+  <!-- 
+  	将传递参数PageUtil pageUtil修改为Map paramMap；
+  	目的是为了：增加按教师工号或姓名模糊搜索参数和是否开户标志参数；进行按条件检索 
+   -->
+  <select id="findAllTeacherInfoByPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+ 	select a.*, b.deptName as deptName, c.className as className
+	from zznu_eva_teach_stu_info a 
+	left join zznu_eva_dept_info b on (a.deptId = b.deptId and b.status='E')
+	left join zznu_eva_class_info c on (a.classId = c.classId and c.status='E')
+	where a.status='E' and a.userType='T'
+	<if test="tsno != null and tsno != ''">  <!-- 由于前端学生学号(教师工号)或姓名检索框为同一个输入框，虽然同一个值分拆成两个，但实际只能为一个值；判断一个即可 -->
+		and (a.tsno like concat(concat('%', #{tsno,jdbcType=VARCHAR}), '%') 
+		or a.name like concat(concat('%', #{name,jdbcType=VARCHAR}), '%'))
+	</if>
+	<if test="isOpenAct != null and isOpenAct != ''">
+		and a.isOpenAct=#{isOpenAct,jdbcType=VARCHAR}
+	</if>
+	order by a.deptId,a.classId asc
+	limit #{begin},#{end}
+  </select>
+  
+  <!-- 分页查询所有学生信息 -->
+  <!-- 
+  	将传递参数PageUtil pageUtil修改为Map paramMap；
+  	目的是为了：增加按学生学号或姓名模糊搜索参数和是否开户标志参数；进行按条件检索 
+   -->
+  <select id="findAllStudentInfoByPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	select a.*, b.deptName as deptName, c.className as className
+	from zznu_eva_teach_stu_info a 
+	left join zznu_eva_dept_info b on (a.deptId = b.deptId and b.status='E')
+	left join zznu_eva_class_info c on (a.classId = c.classId and c.status='E')
+	where a.status='E' and a.userType='S'
+	<if test="tsno != null and tsno != ''">  <!-- 由于前端学生学号(教师工号)或姓名检索框为同一个输入框，虽然同一个值分拆成两个，但实际只能为一个值；判断一个即可 -->
+		and (a.tsno like concat(concat('%', #{tsno,jdbcType=VARCHAR}), '%') 
+		or a.name like concat(concat('%', #{name,jdbcType=VARCHAR}), '%'))
+	</if>
+	<if test="isOpenAct != null and isOpenAct != ''">
+		and a.isOpenAct=#{isOpenAct,jdbcType=VARCHAR}
+	</if>
+	<if test="classId != null and classId != ''">  <!-- 为了方法通用性，可以根据班级信息查学生信息 -->
+		and a.classId=#{classId,jdbcType=VARCHAR}
+	</if>
+	order by a.deptId,a.classId asc
+	limit #{begin},#{end}
+  </select>
+  
+  <!-- 获取教师总数 -->
+  <!-- 
+  	增加检索参数：tsno-教师工号/学生学号;name-教师/学生姓名;isOpenAct-是否开户标志
+   -->
+  <select id="getTeacherCount" parameterType="java.util.Map" resultType="java.lang.Long">
+  	select count(*) cnt 
+	from zznu_eva_teach_stu_info
+	where userType='T' and status='E'
+	<if test="tsno != null and tsno != ''">
+		and (tsno like concat(concat('%', #{tsno,jdbcType=VARCHAR}), '%') 
+		or name like concat(concat('%', #{name,jdbcType=VARCHAR}), '%'))
+	</if>
+	<if test="isOpenAct != null and isOpenAct != ''">
+		and isOpenAct=#{isOpenAct,jdbcType=VARCHAR}
+	</if> 
+  </select>
+  
+  <!-- 获取学生总数 -->
+  <!-- 
+  	增加检索参数：tsno-教师工号/学生学号;name-教师/学生姓名;isOpenAct-是否开户标志
+   -->
+  <select id="getStudentCount" parameterType="java.util.Map" resultType="java.lang.Long">
+  	select count(*) cnt 
+	from zznu_eva_teach_stu_info
+	where userType='S' and status='E' 
+	<if test="tsno != null and tsno != ''">
+		and (tsno like concat(concat('%', #{tsno,jdbcType=VARCHAR}), '%') 
+		or name like concat(concat('%', #{name,jdbcType=VARCHAR}), '%'))
+	</if>
+	<if test="isOpenAct != null and isOpenAct != ''">
+		and isOpenAct=#{isOpenAct,jdbcType=VARCHAR}
+	</if>
+	<if test="classId != null and classId != ''">  <!-- 为了方法通用性，可以根据班级信息查学生数 -->
+		and classId=#{classId,jdbcType=VARCHAR}
+	</if>
+  </select>
+  
+  <select id="getTeachStuInfoCountByTsno" parameterType="java.lang.String" resultType="java.lang.Integer">
+  	select count(*) cnt
+	from zznu_eva_teach_stu_info
+	where status = 'E' and tsno=#{tsno,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 院系班级返回结果map -->
+  <resultMap id="ADCMap" type="com.zzrenfeng.zznueg.model.AcaDeptClassInfoModel" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="prntId" property="prntId" jdbcType="VARCHAR" />
+    <result column="prntName" property="prntName" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+  </resultMap>  
+  
+  <!-- 获取所有院系班级层级关系 -->
+  <select id="getAllAcaDeptClassInfoTrees" resultMap="ADCMap">
+  	select acaid as id, acaName as name, prntId as prntId, prntName as prntName, 'ACA' as type from zznu_eva_aca_info 
+	union
+	select deptId as id, deptName as name, acaId as prntId, acaName as prntName, 'DEPT' as type from zznu_eva_dept_info
+	union
+	select classId as id,className as name, deptId as prntId, deptName as prntName, 'CLASS' as type from zznu_eva_class_info
+
+  </select>
+  
+  
+</mapper>

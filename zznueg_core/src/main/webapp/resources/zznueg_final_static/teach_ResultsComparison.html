@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<style type="text/css">
+		.box{
+			padding: 70px;
+		}
+			#main1 {
+				width: 49%;
+				float: left;
+				height: 520px;
+				text-align: center;
+				background-color: #FCFCFC;
+			}
+			
+			#main2 {
+				width: 49%;
+				float: left;
+				text-align: center;
+				height: 520px;
+				background-color: #FCFCFC;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box clear">
+			<div id="main1"></div>
+			<div id="main2"></div>
+		</div>
+	</body>
+	<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/echarts.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		setIframeH();
+
+		function setIframeH() {
+			var body = $(document.body);
+			var iframe = $(parent.document.getElementById('parentIframe'));
+			iframe.height(body.height());
+		}
+		var myChart1 = echarts.init(document.getElementById("main1"));
+		var myChart2 = echarts.init(document.getElementById("main2"));
+		var color3 = ['#4596e5', '#36bd9b', '#b6a2de', '#fe9331', '#7266bb', '#22b7e5', '#5c9ded'];
+		var option1 = {
+				color: color3,
+				tooltip: {
+					trigger: 'axis', //弹框的显示与否
+					axisPointer: {
+						type: 'cross'
+					}
+				},
+				legend: {
+					data: ['上一次考试我指导的学生各科平均成绩', '本次我指导的学生各科平均成绩']
+				},
+				xAxis: {
+					data: ["微格", "板书", "教案", "课件"]
+				},
+				yAxis: {
+					type: 'value',
+					min: 0,
+					max: 100,
+					name: '单科成绩'
+				},
+				series: [{
+					name: '上一次考试我指导的学生各科平均成绩',
+					type: 'bar',
+					data: [60, 80, 70, 80],
+					barGap:'0%'
+				}, {
+					name: '本次我指导的学生各科平均成绩',
+					type: 'bar',
+					data: [80, 85, 65, 90]
+				}]
+			}
+			//使用刚指定的配置项和数据显示图表
+		myChart1.setOption(option1);
+		
+		var option2 = {
+				color: color3,
+				tooltip: {
+					trigger: 'axis', //弹框的显示与否
+					axisPointer: {
+						type: 'cross'
+					}
+				},
+				legend: {
+					data: ['各科平均成绩', '我指导的学生各科平均成绩']
+				},
+				xAxis: {
+					data: ["微格", "板书", "教案", "课件"]
+				},
+				yAxis: {
+					type: 'value',
+					min: 0,
+					max: 100,
+					name: '单科成绩'
+				},
+				series: [{
+					name: '各科平均成绩',
+					type: 'bar',
+					data: [60, 80, 70, 80],
+					barGap:'0%'
+				}, {
+					name: '我指导的学生各科平均成绩',
+					type: 'bar',
+					data: [80, 85, 65, 90]
+				}]
+			}
+			//使用刚指定的配置项和数据显示图表
+		myChart2.setOption(option2);
+	</script>
+
+</html>
