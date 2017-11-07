@@ -14,7 +14,6 @@ import com.zzrenfeng.base.service.SystemSettinigService;
 import com.zzrenfeng.base.utils.Constants;
 import com.zzrenfeng.base.utils.StringUtil;
 import com.zzrenfeng.base.utils.UUIDUtils;
-import com.zzrenfeng.zznueg.utils.CommonConstants;
 
 @Transactional
 @Service("systemSettinigService")
@@ -61,7 +60,7 @@ public class SystemSettinigServiceImpl implements SystemSettinigService {
 			return false;
 		}		
 		
-		if(CommonConstants.COMM_CONST_INTEGER_1 == saveOrUpdateCount) {
+		if(Constants.COMM_CONST_INTEGER_1 == saveOrUpdateCount) {
 			return true;
 		}
 		return false;

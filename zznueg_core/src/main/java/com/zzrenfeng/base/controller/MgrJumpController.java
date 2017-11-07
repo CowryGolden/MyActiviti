@@ -1,5 +1,9 @@
 package com.zzrenfeng.base.controller;
 
+import java.util.Date;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -7,16 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.zzrenfeng.base.enums.DictionaryEnum;
+import com.zzrenfeng.base.utils.Constants;
 import com.zzrenfeng.base.utils.DateUtil;
 import com.zzrenfeng.base.utils.IpUtil;
 import com.zzrenfeng.base.utils.SystemBuffer;
-import com.zzrenfeng.zznueg.utils.CommonConstants;
-
-import sun.net.util.IPAddressUtil;
-
-import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * 后台页面布局控制器
@@ -106,7 +104,7 @@ public class MgrJumpController {
 		Date now = new Date();
 		String nowStr = DateUtil.DateToStr(now, null);
 		Date endDate = DateUtil.StrToDate(endDateStr, null);
-		String gtFlag = now.getTime() > endDate.getTime() ? CommonConstants.COMM_CONST_STRING_1 : CommonConstants.COMM_CONST_STRING_0;
+		String gtFlag = now.getTime() > endDate.getTime() ? Constants.COMM_CONST_STRING_1 : Constants.COMM_CONST_STRING_0;
 		request.getSession(false).setAttribute("now", nowStr);	
 		request.getSession(false).setAttribute("gtFlag", gtFlag);
 
