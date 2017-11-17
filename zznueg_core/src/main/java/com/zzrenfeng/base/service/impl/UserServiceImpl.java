@@ -17,7 +17,6 @@ import com.zzrenfeng.base.utils.UUIDUtils;
 import com.zzrenfeng.base.utils.security.Md5Utils;
 import com.zzrenfeng.zznueg.dao.TeachStuInfoMapper;
 import com.zzrenfeng.zznueg.entity.TeachStuInfo;
-import com.zzrenfeng.zznueg.utils.CommonConstants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -126,9 +125,9 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
                 userRoleMapper.insert(userRole);
             }
 		}
-		if(CommonConstants.COMM_CONST_INTEGER_1 == saveOrUpdateCount) {
-			teachStuInfo.setIsOpenAct(CommonConstants.COMM_CONST_STRING_1);		//将教师学生信息对象中的是否开户设置成：1-已开户			
-			if(CommonConstants.COMM_CONST_INTEGER_1 == this.teachStuInfoMapper.updateByPrimaryKeySelective(teachStuInfo)) {
+		if(Constants.COMM_CONST_INTEGER_1 == saveOrUpdateCount) {
+			teachStuInfo.setIsOpenAct(Constants.COMM_CONST_STRING_1);		//将教师学生信息对象中的是否开户设置成：1-已开户			
+			if(Constants.COMM_CONST_INTEGER_1 == this.teachStuInfoMapper.updateByPrimaryKeySelective(teachStuInfo)) {
 				return true;	//只有两者同时更新成功才返回true
 			}        	
         }

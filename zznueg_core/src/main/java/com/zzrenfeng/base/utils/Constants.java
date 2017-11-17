@@ -111,6 +111,14 @@ public class Constants {
 	 * 通用字符串常量"1"
 	 */
 	public final static String COMM_CONST_STRING_1 = "1";
+	/**
+	 * 通用常量-整型数字：0
+	 */
+	public final static int COMM_CONST_INTEGER_0 = 0;
+	/**
+	 * 通用常量-整型数字：1
+	 */
+	public final static int COMM_CONST_INTEGER_1 = 1;
 	
     /**
      * 用户类型-教师
