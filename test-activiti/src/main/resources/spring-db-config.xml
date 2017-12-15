@@ -1,0 +1,37 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans.xsd 
+        http://www.springframework.org/schema/tx   
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop.xsd">
+	
+	<!-- 这里使用DBCP（DataBase Connection Pool）数据库连接池（Apache），可以换成其他的如： 阿里的DruidDataSource，C3P0，Hikari，Tomcat连接池等-->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+         destroy-method="close">
+         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+         <property name="url" value="jdbc:mysql://localhost:3306/activiti6?characterEncoding=UTF-8&amp;useUnicode=true&amp;allowMultiQueries=true&amp;useSSL=true"/>
+         <property name="username" value="root"/>
+         <property name="password" value="r00t"/>
+         <property name="initialSize" value="20" />
+         <property name="maxActive" value="50"/>
+         <property name="maxIdle" value="20"/>
+         <property name="minIdle" value="10"/>
+    </bean>
+<!--     
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/activiti6?characterEncoding=UTF-8&amp;useUnicode=true&amp;allowMultiQueries=true&amp;useSSL=true"/>
+        <property name="username" value="root"/>
+        <property name="password" value="r00t"/>
+    </bean>
+ -->
+	<!-- Spring事务管理配置 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+    
+</beans>
