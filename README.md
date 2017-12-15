@@ -1,2 +1,2 @@
-# zznueg
-郑州师范学院毕业评估项目
+# MyActiviti
+Activiti6.0.0研究学习
